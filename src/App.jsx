@@ -1,8 +1,8 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "./Context/ThemeContext";
 import HOME from "./HOME";
 import Careers from "./Components/CAREERS/Careers";
-import Lws from "./Components/LWS/Lws";
+
 import AboutUs from "./About";
 import GetInTouch from "./Components/GetInTouch/GetInTouch";
 import SalesForceServices from "./Components/AllServices/SalesForceServices";
@@ -19,25 +19,29 @@ import SalesforceIntegrationServices from "./Components/AllServices/SalesForceSe
 import SalesForceManagedServices from "./Components/AllServices/SalesForceServices/SalesForceManagedServices";
 import SalesForceMarketingCloud from "./Components/AllServices/SalesForceServices/SalesForceMarketingCloud";
 import SalesCloudSolutionServices from "./Components/AllServices/SalesForceServices/SalesCloudSolutionServices";
-
+import Blog1 from "./Components/Blogs/AllBlogs/Blog1"; // Import Blog1 component (adjust the path as needed)
+import Blog2 from "./Components/Blogs/AllBlogs/Blog2";
 const App = () => {
   return (
     <ThemeProvider>
       <BrowserRouter>
         <Routes>
-          {/* Redirect to home if root is accessed */}
-          <Route path="/" element={<Navigate to="/home" />} />
+          {/* Render HOME component at the root URL */}
+          <Route path="/" element={<HOME />} />
 
-          {/* Home Route */}
+          {/* Also render HOME component at /home */}
           <Route path="/home" element={<HOME />} />
 
+          {/* Blog Routes */}
+          <Route path="/blog1" element={<Blog1 />} />
+          <Route path="/blog2" element={<Blog2 />} />
           {/* Other Routes */}
           <Route path="/get-in-touch" element={<GetInTouch />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/careers" element={<Careers />} />
-          <Route path="/lws" element={<Lws />} />
+          
            
-          <Route path="/salesForce" element={<SalesForceServices/>}/>
+          <Route path="/salesForce" element={<SalesForceServices />} />
           {/* Salesforce Services Routes */}
           <Route
             path="/sales-force-consulting"

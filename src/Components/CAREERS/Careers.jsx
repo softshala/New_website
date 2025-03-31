@@ -1,7 +1,8 @@
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 import NavBar from "../NavBar";
 import { useTheme } from "../../Context/ThemeContext";
 import Footer from "../Footer";
+import { Link } from "react-router-dom"; // Import Link for navigation
 
 const Career = () => {
   const { isDarkTheme } = useTheme();
@@ -10,15 +11,18 @@ const Career = () => {
   const jobCards = [
     {
       title: "Graphic Designer",
-      description: "Looking for a creative graphic designer with experience in Adobe Suite and Figma.",
+      description:
+        "Looking for a creative graphic designer with experience in Adobe Suite and Figma.",
     },
     {
       title: "3D Designer & Animator",
-      description: "Seeking a skilled 3D designer to create animations and assets for digital projects.",
+      description:
+        "Seeking a skilled 3D designer to create animations and assets for digital projects.",
     },
     {
       title: "Salesforce Developer",
-      description: "Join our team as a Salesforce Developer and help build scalable CRM solutions.",
+      description:
+        "Join our team as a Salesforce Developer and help build scalable CRM solutions.",
     },
   ];
 
@@ -27,17 +31,20 @@ const Career = () => {
     {
       name: "Kunal Arya",
       role: "Head of Marketing & UI/UX Designer",
-      quote: "Softshala Technologies has amazing work culture! The team is Supportive, and the project are exciting",
+      quote:
+        "Softshala Technologies has amazing work culture! The team is Supportive, and the project are exciting",
     },
     {
       name: "Kunal Arya",
       role: "Head of Marketing & UI/UX Designer",
-      quote: "Softshala Technologies has amazing work culture! The team is Supportive, and the project are exciting",
+      quote:
+        "Softshala Technologies has amazing work culture! The team is Supportive, and the project are exciting",
     },
     {
       name: "Kunal",
       role: "",
-      quote: "Softshala Technologies has amazing work culture! The team is Supportive, and the project are exciting",
+      quote:
+        "Softshala Technologies has amazing work culture! The team is Supportive, and the project are exciting",
     },
   ];
 
@@ -50,25 +57,43 @@ const Career = () => {
     "Offer Letter",
   ];
 
-  // Blog data
+  // Blog data with links to Blog1 and Blog2
   const blogs = [
     {
-      title: "Sustainable IT: Making Your Digital System Eco-Friendly with Salesforce",
+      title:
+        "Sustainable IT: Making Your Digital System Eco-Friendly with Salesforce",
       author: "Shubham Sharma",
       date: "March 29, 2025",
-      description: "Explore how Salesforce helps businesses reduce their carbon footprint and build sustainable digital systems.",
+      description:
+        "Explore how Salesforce helps businesses reduce their carbon footprint and build sustainable digital systems.",
+      link: "/blog1", // Link to Blog1
     },
     {
-      title: "Thought Leadership in Salesforce Implementation: Why It Matters for Your Business",
+      title:
+        "Thought Leadership in Salesforce Implementation: Why It Matters for Your Business",
       author: "Shubham Sharma",
       date: "March 29, 2025",
-      description: "Explore how Salesforce helps businesses reduce their carbon footprint and build sustainable digital systems.",
+      description:
+        "Learn why thought leadership in Salesforce implementation is crucial for business success.",
+      link: "/blog2", // Link to Blog2
     },
     {
-      title: "Sustainable IT: Making Your Digital System Eco-Friendly with Salesforce",
+      title:
+        "Sustainable IT: Making Your Digital System Eco-Friendly with Salesforce",
       author: "Shubham Sharma",
       date: "March 29, 2025",
-      description: "Explore how Salesforce helps businesses reduce their carbon footprint and build sustainable digital systems.",
+      description:
+        "Explore how Salesforce helps businesses reduce their carbon footprint and build sustainable digital systems.",
+      link: "/blog1",
+    },
+    {
+      title:
+        "Thought Leadership in Salesforce Implementation: Why It Matters for Your Business",
+      author: "Shubham Sharma",
+      date: "March 29, 2025",
+      description:
+        "Learn why thought leadership in Salesforce implementation is crucial for business success.",
+      link: "/blog2",
     },
   ];
 
@@ -138,165 +163,161 @@ const Career = () => {
           </div>
         </div>
 
-        {/* Job Cards Section with Infinite Scroll */}
-        <div className="mt-12 px-4 md:px-14 pb-20 overflow-x-hidden">
-          <motion.div
-            className="inline-flex gap-6"
-            animate={{ x: ["0%", "-100%"] }}
-            transition={{
-              x: {
-                repeat: Infinity,
-                repeatType: "loop",
-                duration: 20,
-                ease: "linear",
-              },
-            }}
-          >
-            {[...jobCards, ...jobCards].map((job, index) => (
-              <div
-                key={index}
-                className={`w-[300px] p-6 rounded-lg border ${
-                  isDarkTheme ? "border-gray-600 bg-transparent" : "border-gray-200 bg-transparent"
-                } shadow-md h-[280px] flex flex-col`}
-              >
-                <div className="flex items-center gap-2 mb-4">
-                  <div
-                    className={`w-8 h-8 rounded-md flex items-center justify-center ${
-                      isDarkTheme ? "bg-gray-700" : "bg-gray-100"
-                    }`}
-                  >
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                  </div>
-                  <h3 className="text-xl font-semibold">{job.title}</h3>
-                </div>
-                <p className="text-sm text-gray-400 mb-4 flex-grow">{job.description}</p>
-                <div className="flex gap-2 mb-4">
-                  <span
-                    className={`text-xs px-3 py-1 rounded-full flex items-center gap-1 ${
-                      isDarkTheme ? "bg-gray-700 text-gray-300" : "bg-gray-100 text-gray-600"
-                    }`}
-                  >
-                    <svg
-                      className="w-4 h-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"
-                      />
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                      />
-                    </svg>
-                    Remote
-                  </span>
-                  <span
-                    className={`text-xs px-3 py-1 rounded-full flex items-center gap-1 ${
-                      isDarkTheme ? "bg-gray-700 text-gray-300" : "bg-gray-100 text-gray-600"
-                    }`}
-                  >
-                    <svg
-                      className="w-4 h-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                    Full-Time
-                  </span>
-                </div>
-                <button
-                  className={`w-full py-2 rounded-lg ${
+        {/* Job Cards Section with Manual Horizontal Scroll */}
+        <div className="mt-12 px-4 md:px-14 pb-20">
+          <div className="overflow-x-auto snap-x snap-mandatory scrollbar-hide">
+            <div className="inline-flex gap-6">
+              {[...jobCards, ...jobCards].map((job, index) => (
+                <div
+                  key={index}
+                  className={`w-[300px] p-6 rounded-lg border snap-center ${
                     isDarkTheme
-                      ? "bg-white text-black hover:bg-gray-300"
-                      : "bg-black text-white hover:bg-gray-700"
-                  } font-semibold`}
+                      ? "border-gray-600 bg-transparent"
+                      : "border-gray-200 bg-transparent"
+                  } shadow-md h-[280px] flex flex-col`}
                 >
-                  Apply Now
-                </button>
-              </div>
-            ))}
-          </motion.div>
+                  <div className="flex items-center gap-2 mb-4">
+                    <div
+                      className={`w-8 h-8 rounded-md flex items-center justify-center ${
+                        isDarkTheme ? "bg-gray-700" : "bg-gray-100"
+                      }`}
+                    >
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    </div>
+                    <h3 className="text-xl font-semibold">{job.title}</h3>
+                  </div>
+                  <p className="text-sm text-gray-400 mb-4 flex-grow">
+                    {job.description}
+                  </p>
+                  <div className="flex gap-2 mb-4">
+                    <span
+                      className={`text-xs px-3 py-1 rounded-full flex items-center gap-1 ${
+                        isDarkTheme
+                          ? "bg-gray-700 text-gray-300"
+                          : "bg-gray-100 text-gray-600"
+                      }`}
+                    >
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"
+                        />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
+                      </svg>
+                      Remote
+                    </span>
+                    <span
+                      className={`text-xs px-3 py-1 rounded-full flex items-center gap-1 ${
+                        isDarkTheme
+                          ? "bg-gray-700 text-gray-300"
+                          : "bg-gray-100 text-gray-600"
+                      }`}
+                    >
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                      Full-Time
+                    </span>
+                  </div>
+                  <button
+                    className={`w-full py-2 rounded-lg ${
+                      isDarkTheme
+                        ? "bg-white text-black hover:bg-gray-300"
+                        : "bg-black text-white hover:bg-gray-700"
+                    } font-semibold`}
+                  >
+                    Apply Now
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
-        {/* What Our Employees Say Section with Infinite Scroll */}
-        <div className="mt-8 px-4 md:px-14 pb-12 overflow-x-hidden">
+        {/* What Our Employees Say Section with Manual Horizontal Scroll */}
+        <div className="mt-8 px-4 md:px-14 pb-12">
           <h2 className="text-2xl md:text-4xl font-bold uppercase text-center mb-6">
             What Our Employees Say
           </h2>
-          <motion.div
-            className="inline-flex gap-6"
-            animate={{ x: ["0%", "-100%"] }}
-            transition={{
-              x: {
-                repeat: Infinity,
-                repeatType: "loop",
-                duration: 20,
-                ease: "linear",
-              },
-            }}
-          >
-            {[...testimonials, ...testimonials].map((testimonial, index) => (
-              <div
-                key={index}
-                className={`w-[360px] p-6 rounded-lg border ${
-                  isDarkTheme ? "border-gray-600 bg-transparent" : "border-gray-200 bg-transparent"
-                } shadow-md`}
-              >
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 rounded-full bg-gray-500 flex items-center justify-center">
-                    <svg
-                      className="w-6 h-6 text-white"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                      />
-                    </svg>
+          <div className="overflow-x-auto snap-x snap-mandatory scrollbar-hide">
+            <div className="inline-flex gap-6">
+              {[...testimonials, ...testimonials].map((testimonial, index) => (
+                <div
+                  key={index}
+                  className={`w-[360px] p-6 rounded-lg border snap-center ${
+                    isDarkTheme
+                      ? "border-gray-600 bg-transparent"
+                      : "border-gray-200 bg-transparent"
+                  } shadow-md`}
+                >
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 rounded-full bg-gray-500 flex items-center justify-center">
+                      <svg
+                        className="w-6 h-6 text-white"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold">
+                        {testimonial.name}
+                      </h3>
+                      <p className="text-sm text-gray-400">
+                        {testimonial.role}
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-lg font-semibold">{testimonial.name}</h3>
-                    <p className="text-sm text-gray-400">{testimonial.role}</p>
-                  </div>
+                  <p className="text-sm text-gray-400">{testimonial.quote}</p>
                 </div>
-                <p className="text-sm text-gray-400">{testimonial.quote}</p>
-              </div>
-            ))}
-          </motion.div>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* Our Hiring Process Section */}
@@ -329,63 +350,59 @@ const Career = () => {
           </div>
         </div>
 
-        {/* Latest Blogs Section with Infinite Scroll */}
-        <div className="mt-12 px-4 md:px-14 pb-12 overflow-x-hidden">
+        {/* Latest Blogs Section with Manual Horizontal Scroll */}
+        <div className="mt-12 px-4 md:px-14 pb-12">
           <h2 className="text-2xl md:text-4xl font-bold uppercase text-center mb-8">
             Latest Blogs
           </h2>
-          <motion.div
-            className="inline-flex gap-6"
-            animate={{ x: ["0%", "-100%"] }}
-            transition={{
-              x: {
-                repeat: Infinity,
-                repeatType: "loop",
-                duration: 20,
-                ease: "linear",
-              },
-            }}
-          >
-            {[...blogs, ...blogs].map((blog, index) => (
-              <div
-                key={index}
-                className={`w-[400px] p-6 rounded-lg border ${
-                  isDarkTheme ? "border-gray-600 bg-transparent" : "border-gray-200 bg-transparent"
-                } shadow-md h-[280px] flex flex-col`}
-              >
-                <div className="flex items-center gap-2 mb-4">
-                  <svg
-                    className="w-5 h-5 text-gray-400"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                    />
-                  </svg>
-                  <h3 className="text-xl font-semibold">{blog.title}</h3>
-                </div>
-                <p className="text-sm text-gray-400 mb-2">
-                  By {blog.author} - {blog.date}
-                </p>
-                <p className="text-sm text-gray-400 mb-4 flex-grow">{blog.description}</p>
-                <button
-                  className={`w-full py-2 rounded-lg border ${
+          <div className="overflow-x-auto snap-x snap-mandatory scrollbar-hide">
+            <div className="inline-flex gap-6">
+              {[...blogs, ...blogs].map((blog, index) => (
+                <div
+                  key={index}
+                  className={`w-[400px] p-6 rounded-lg border snap-center ${
                     isDarkTheme
-                      ? "border-gray-600 text-white hover:bg-gray-700"
-                      : "border-gray-300 text-black hover:bg-gray-200"
-                  } font-semibold`}
+                      ? "border-gray-600 bg-transparent"
+                      : "border-gray-200 bg-transparent"
+                  } shadow-md h-[280px] flex flex-col`}
                 >
-                  Read More
-                </button>
-              </div>
-            ))}
-          </motion.div>
+                  <div className="flex items-center gap-2 mb-4">
+                    <svg
+                      className="w-5 h-5 text-gray-400"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                      />
+                    </svg>
+                    <h3 className="text-xl font-semibold">{blog.title}</h3>
+                  </div>
+                  <p className="text-sm text-gray-400 mb-2">
+                    By {blog.author} - {blog.date}
+                  </p>
+                  <p className="text-sm text-gray-400 mb-4 flex-grow">
+                    {blog.description}
+                  </p>
+                  <Link
+                    to={blog.link}
+                    className={`w-full py-2 rounded-lg border text-center ${
+                      isDarkTheme
+                        ? "border-gray-600 text-white hover:bg-gray-700"
+                        : "border-gray-300 text-black hover:bg-gray-200"
+                    } font-semibold`}
+                  >
+                    Read More
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* Stay Updated Section */}
@@ -424,3 +441,20 @@ const Career = () => {
 };
 
 export default Career;
+
+// Add this CSS to hide the scrollbar
+const styles = `
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Opera */
+  }
+`;
+
+// Inject the styles into the document
+const styleSheet = document.createElement("style");
+styleSheet.type = "text/css";
+styleSheet.innerText = styles;
+document.head.appendChild(styleSheet);

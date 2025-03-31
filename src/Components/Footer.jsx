@@ -12,14 +12,27 @@ const Footer = () => {
   const navigate = useNavigate();
 
   const handleAboutClick = () => {
-    const aboutSection = document.getElementById("about-section");
-    if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: "smooth" });
-    }
+    navigate("/about", { state: { scrollToContact: true } });
+  };
+
+  const handleCareerClick = () => {
+    navigate("/careers", { state: { scrollToContact: true } });
   };
 
   const handleNavigation = () => {
     navigate("/get-in-touch", { state: { scrollToContact: true } });
+  };
+
+  const handleSalesforceClick = () => {
+    navigate("/sales-force-consulting", { state: { scrollToContact: true } });
+  };
+
+  const handleServicenowClick = () => {
+    navigate("/service-now", { state: { scrollToContact: true } });
+  };
+
+  const handleWebDevelopmentClick = () => {
+    navigate("/web-development", { state: { scrollToContact: true } });
   };
 
   return (
@@ -45,9 +58,21 @@ const Footer = () => {
               className="w-[180px] md:w-[187px] h-auto"
             />
             <ul className="space-y-2 cursor-pointer mt-10 md:mt-24 text-[10px] md:text-[20px] font-semibold flex flex-col gap-2">
-              <li><div onClick={handleAboutClick} className="hover:text-blue-500">About</div></li>
-              <li><a href="#" className="hover:text-blue-500">Career</a></li>
-              <li><div onClick={handleNavigation} className="hover:text-blue-500">Contact</div></li>
+              <li>
+                <div onClick={handleAboutClick} className="hover:text-blue-500">
+                  About
+                </div>
+              </li>
+              <li>
+                <div onClick={handleCareerClick} className="hover:text-blue-500">
+                  Career
+                </div>
+              </li>
+              <li>
+                <div onClick={handleNavigation} className="hover:text-blue-500">
+                  Contact
+                </div>
+              </li>
             </ul>
           </div>
           <div className="flex flex-col items-center md:items-start md:mr-96">
@@ -62,9 +87,21 @@ const Footer = () => {
               }}
             />
             <ul className="space-y-2 mt-6 md:mt-7 text-[10px] md:text-[20px] font-semibold flex flex-col gap-2 items-center">
-              <li><a href="" className="hover:text-blue-500">Salesforce</a></li>
-              <li><a href="#" className="hover:text-blue-500">Servicenow</a></li>
-              <li><a href="#" className="hover:text-blue-500">Web Development</a></li>
+              <li>
+                <div onClick={handleSalesforceClick} className="hover:text-blue-500">
+                  Salesforce
+                </div>
+              </li>
+              <li>
+                <div onClick={handleServicenowClick} className="hover:text-blue-500">
+                  Servicenow
+                </div>
+              </li>
+              <li>
+                <div onClick={handleWebDevelopmentClick} className="hover:text-blue-500">
+                  Web Development
+                </div>
+              </li>
             </ul>
           </div>
           <div className="flex flex-col items-center md:items-start md:flex-row md:mr-20">

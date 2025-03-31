@@ -1,6 +1,6 @@
 import { useReducer, useEffect, useRef } from "react";
 import SalesForceServices from "./SalesForceServices";
-import ServiceNow from "./ServiceNOw";
+import ServiceNow from "./ServiceNow";
 import WebDevelopment from "./WebDevelopment";
 
 const skills = ["Salesforce Services", "ServiceNow", "Web Development"];

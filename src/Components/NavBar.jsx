@@ -40,10 +40,6 @@ const NavBar = () => {
     navigate("/about", { state: { scrollToContact: true } });
   };
 
-  const LwsNavigation = () => {
-    navigate("/lws", { state: { scrollToContact: true } });
-  };
-  
   const careersNavigation = () => {
     navigate("/careers", { state: { scrollToContact: true } });
   };
@@ -68,7 +64,9 @@ const NavBar = () => {
 
           <button
             className="md:hidden relative w-[80px] ml-16 h-[30px] flex items-center justify-between rounded-full border-2 border-gray-400"
-            style={{ background: "linear-gradient(to right, #1E1E1E, #A5AAAD)" }}
+            style={{
+              background: "linear-gradient(to right, #1E1E1E, #A5AAAD)",
+            }}
             onClick={toggleTheme}
           >
             <div
@@ -138,9 +136,9 @@ const NavBar = () => {
               className={`relative ${
                 isDarkTheme ? "text-white" : "text-black"
               } text-base font-medium tracking-[0.80px] whitespace-nowrap`}
-              onClick={LwsNavigation}
+              onClick={careersNavigation} // Updated to navigate to careers page
             >
-              LWS
+              Blogs
             </div>
           </div>
 
@@ -154,7 +152,9 @@ const NavBar = () => {
           </div>
 
           {/* Theme Toggle Button */}
-          <div className={`hidden md:flex ml-auto items-center cursor-pointer w-[81px] h-[31px]`}>
+          <div
+            className={`hidden md:flex ml-auto items-center cursor-pointer w-[81px] h-[31px]`}
+          >
             <button
               className={`relative w-[80px] h-[30px] flex items-center justify-between rounded-full`}
               style={{
@@ -234,7 +234,7 @@ const NavBar = () => {
               src={isDarkTheme ? WhiteContact : BlackContactUs}
             />
             <img
-              onClick={LwsNavigation}
+              onClick={careersNavigation} // Updated to navigate to careers page
               className="cursor-pointer"
               src={isDarkTheme ? WhiteLWS : BlackLWS}
             />
