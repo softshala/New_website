@@ -1,28 +1,44 @@
-// import { motion } from "framer-motion";
 import NavBar from "../NavBar";
 import { useTheme } from "../../Context/ThemeContext";
 import Footer from "../Footer";
 import { Link } from "react-router-dom"; // Import Link for navigation
+import { useState } from "react"; // Import useState for search and filter functionality
 
 const Career = () => {
   const { isDarkTheme } = useTheme();
+  const [searchTerm, setSearchTerm] = useState(""); // State for search input
+  const [showFilters, setShowFilters] = useState(false); // State to toggle filter dropdown
+  const [filters, setFilters] = useState({
+    location: "",
+    jobType: "",
+    experienceLevel: "",
+  }); // State for filter options
 
-  // Card data array for job cards
+  // Card data array for job cards with additional fields for filtering
   const jobCards = [
     {
       title: "Graphic Designer",
       description:
         "Looking for a creative graphic designer with experience in Adobe Suite and Figma.",
+      location: "Remote",
+      jobType: "Full-Time",
+      experienceLevel: "Mid-Level",
     },
     {
       title: "3D Designer & Animator",
       description:
         "Seeking a skilled 3D designer to create animations and assets for digital projects.",
+      location: "On-Site",
+      jobType: "Part-Time",
+      experienceLevel: "Senior",
     },
     {
       title: "Salesforce Developer",
       description:
         "Join our team as a Salesforce Developer and help build scalable CRM solutions.",
+      location: "Hybrid",
+      jobType: "Full-Time",
+      experienceLevel: "Entry-Level",
     },
   ];
 
@@ -66,7 +82,7 @@ const Career = () => {
       date: "March 29, 2025",
       description:
         "Explore how Salesforce helps businesses reduce their carbon footprint and build sustainable digital systems.",
-      link: "/blog1", // Link to Blog1
+      link: "/blog1",
     },
     {
       title:
@@ -75,7 +91,7 @@ const Career = () => {
       date: "March 29, 2025",
       description:
         "Learn why thought leadership in Salesforce implementation is crucial for business success.",
-      link: "/blog2", // Link to Blog2
+      link: "/blog2",
     },
     {
       title:
@@ -96,6 +112,50 @@ const Career = () => {
       link: "/blog2",
     },
   ];
+
+  // Handle search input change
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  // Handle filter changes
+  const handleFilterChange = (e) => {
+    const { name, value } = e.target;
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      [name]: value,
+    }));
+  };
+
+  // Filter job cards based on search term and filters
+  const filteredJobCards = jobCards.filter((job) => {
+    // Search filter
+    const matchesSearch = [job.title, job.description].some((field) =>
+      field.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    // Location filter
+    const matchesLocation = filters.location
+      ? job.location === filters.location
+      : true;
+
+    // Job type filter
+    const matchesJobType = filters.jobType
+      ? job.jobType === filters.jobType
+      : true;
+
+    // Experience level filter
+    const matchesExperienceLevel = filters.experienceLevel
+      ? job.experienceLevel === filters.experienceLevel
+      : true;
+
+    return (
+      matchesSearch &&
+      matchesLocation &&
+      matchesJobType &&
+      matchesExperienceLevel
+    );
+  });
 
   return (
     <>
@@ -126,11 +186,13 @@ const Career = () => {
         </div>
 
         {/* Search and Filter Section */}
-        <div className="flex justify-center items-center mt-8 px-4 md:px-14">
+        <div className="flex justify-center items-center mt-8 px-4 md:px-14 relative">
           <div className="flex flex-col md:flex-row items-center w-full max-w-4xl gap-3">
             <input
               type="text"
               placeholder="Search Jobs..."
+              value={searchTerm}
+              onChange={handleSearchChange}
               className={`w-full md:w-3/4 py-1.5 px-3 rounded-lg border text-sm ${
                 isDarkTheme
                   ? "bg-transparent border-gray-600 text-white placeholder-gray-400"
@@ -138,6 +200,7 @@ const Career = () => {
               } focus:outline-none focus:ring-2 focus:ring-blue-500`}
             />
             <button
+              onClick={() => setShowFilters(!showFilters)}
               className={`flex items-center gap-1 py-1.5 px-3 rounded-lg border text-sm ${
                 isDarkTheme
                   ? "bg-gray-800 border-gray-600 text-white"
@@ -161,112 +224,205 @@ const Career = () => {
               </svg>
             </button>
           </div>
+
+          {/* Filter Dropdown */}
+          {showFilters && (
+            <div
+              className={`absolute top-16 md:top-12 w-full max-w-4xl p-4 rounded-lg shadow-lg z-10 ${
+                isDarkTheme ? "bg-gray-800 text-white" : "bg-white text-black"
+              }`}
+            >
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {/* Location Filter */}
+                <div>
+                  <label className="block text-sm font-semibold mb-1">
+                    Location
+                  </label>
+                  <select
+                    name="location"
+                    value={filters.location}
+                    onChange={handleFilterChange}
+                    className={`w-full py-1.5 px-3 rounded-lg border text-sm ${
+                      isDarkTheme
+                        ? "bg-gray-700 border-gray-600 text-white"
+                        : "bg-white border-gray-300 text-black"
+                    } focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                  >
+                    <option value="">All Locations</option>
+                    <option value="Remote">Remote</option>
+                    <option value="On-Site">On-Site</option>
+                    <option value="Hybrid">Hybrid</option>
+                  </select>
+                </div>
+
+                {/* Job Type Filter */}
+                <div>
+                  <label className="block text-sm font-semibold mb-1">
+                    Job Type
+                  </label>
+                  <select
+                    name="jobType"
+                    value={filters.jobType}
+                    onChange={handleFilterChange}
+                    className={`w-full py-1.5 px-3 rounded-lg border text-sm ${
+                      isDarkTheme
+                        ? "bg-gray-700 border-gray-600 text-white"
+                        : "bg-white border-gray-300 text-black"
+                    } focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                  >
+                    <option value="">All Job Types</option>
+                    <option value="Full-Time">Full-Time</option>
+                    <option value="Part-Time">Part-Time</option>
+                    <option value="Contract">Contract</option>
+                  </select>
+                </div>
+
+                {/* Experience Level Filter */}
+                <div>
+                  <label className="block text-sm font-semibold mb-1">
+                    Experience Level
+                  </label>
+                  <select
+                    name="experienceLevel"
+                    value={filters.experienceLevel}
+                    onChange={handleFilterChange}
+                    className={`w-full py-1.5 px-3 rounded-lg border text-sm ${
+                      isDarkTheme
+                        ? "bg-gray-700 border-gray-600 text-white"
+                        : "bg-white border-gray-300 text-black"
+                    } focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                  >
+                    <option value="">All Levels</option>
+                    <option value="Entry-Level">Entry-Level</option>
+                    <option value="Mid-Level">Mid-Level</option>
+                    <option value="Senior">Senior</option>
+                  </select>
+                </div>
+              </div>
+              <button
+                onClick={() => setShowFilters(false)}
+                className={`mt-4 w-full py-1.5 rounded-lg ${
+                  isDarkTheme
+                    ? "bg-gray-600 text-white hover:bg-gray-500"
+                    : "bg-gray-200 text-black hover:bg-gray-300"
+                }`}
+              >
+                Apply Filters
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Job Cards Section with Manual Horizontal Scroll */}
         <div className="mt-12 px-4 md:px-14 pb-20">
           <div className="overflow-x-auto snap-x snap-mandatory scrollbar-hide">
             <div className="inline-flex gap-6">
-              {[...jobCards, ...jobCards].map((job, index) => (
-                <div
-                  key={index}
-                  className={`w-[300px] p-6 rounded-lg border snap-center ${
-                    isDarkTheme
-                      ? "border-gray-600 bg-transparent"
-                      : "border-gray-200 bg-transparent"
-                  } shadow-md h-[280px] flex flex-col`}
-                >
-                  <div className="flex items-center gap-2 mb-4">
-                    <div
-                      className={`w-8 h-8 rounded-md flex items-center justify-center ${
-                        isDarkTheme ? "bg-gray-700" : "bg-gray-100"
-                      }`}
-                    >
-                      <svg
-                        className="w-5 h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                        />
-                      </svg>
-                    </div>
-                    <h3 className="text-xl font-semibold">{job.title}</h3>
-                  </div>
-                  <p className="text-sm text-gray-400 mb-4 flex-grow">
-                    {job.description}
-                  </p>
-                  <div className="flex gap-2 mb-4">
-                    <span
-                      className={`text-xs px-3 py-1 rounded-full flex items-center gap-1 ${
-                        isDarkTheme
-                          ? "bg-gray-700 text-gray-300"
-                          : "bg-gray-100 text-gray-600"
-                      }`}
-                    >
-                      <svg
-                        className="w-4 h-4"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"
-                        />
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                        />
-                      </svg>
-                      Remote
-                    </span>
-                    <span
-                      className={`text-xs px-3 py-1 rounded-full flex items-center gap-1 ${
-                        isDarkTheme
-                          ? "bg-gray-700 text-gray-300"
-                          : "bg-gray-100 text-gray-600"
-                      }`}
-                    >
-                      <svg
-                        className="w-4 h-4"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                        />
-                      </svg>
-                      Full-Time
-                    </span>
-                  </div>
-                  <button
-                    className={`w-full py-2 rounded-lg ${
+              {filteredJobCards.length > 0 ? (
+                [...filteredJobCards, ...filteredJobCards].map((job, index) => (
+                  <div
+                    key={index}
+                    className={`w-[300px] p-6 rounded-lg border snap-center ${
                       isDarkTheme
-                        ? "bg-white text-black hover:bg-gray-300"
-                        : "bg-black text-white hover:bg-gray-700"
-                    } font-semibold`}
+                        ? "border-gray-600 bg-transparent"
+                        : "border-gray-200 bg-transparent"
+                    } shadow-md h-[280px] flex flex-col`}
                   >
-                    Apply Now
-                  </button>
+                    <div className="flex items-center gap-2 mb-4">
+                      <div
+                        className={`w-8 h-8 rounded-md flex items-center justify-center ${
+                          isDarkTheme ? "bg-gray-700" : "bg-gray-100"
+                        }`}
+                      >
+                        <svg
+                          className="w-5 h-5"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                          />
+                        </svg>
+                      </div>
+                      <h3 className="text-xl font-semibold">{job.title}</h3>
+                    </div>
+                    <p className="text-sm text-gray-400 mb-4 flex-grow">
+                      {job.description}
+                    </p>
+                    <div className="flex gap-2 mb-4">
+                      <span
+                        className={`text-xs px-3 py-1 rounded-full flex items-center gap-1 ${
+                          isDarkTheme
+                            ? "bg-gray-700 text-gray-300"
+                            : "bg-gray-100 text-gray-600"
+                        }`}
+                      >
+                        <svg
+                          className="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"
+                          />
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                          />
+                        </svg>
+                        {job.location}
+                      </span>
+                      <span
+                        className={`text-xs px-3 py-1 rounded-full flex items-center gap-1 ${
+                          isDarkTheme
+                            ? "bg-gray-700 text-gray-300"
+                            : "bg-gray-100 text-gray-600"
+                        }`}
+                      >
+                        <svg
+                          className="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                          />
+                        </svg>
+                        {job.jobType}
+                      </span>
+                    </div>
+                    <button
+                      className={`w-full py-2 rounded-lg ${
+                        isDarkTheme
+                          ? "bg-white text-black hover:bg-gray-300"
+                          : "bg-black text-white hover:bg-gray-700"
+                      } font-semibold`}
+                    >
+                      Apply Now
+                    </button>
+                  </div>
+                ))
+              ) : (
+                <div className="w-full text-center text-gray-400">
+                  No jobs found matching your criteria.
                 </div>
-              ))}
+              )}
             </div>
           </div>
         </div>
