@@ -1,6 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
 import Name from "./NameInput/Name";
 import Email from "./NameInput/Email";
 import Phone from "./NameInput/Phone";
@@ -18,18 +16,11 @@ import { useLocation } from "react-router-dom";
 import NavBar from "../NavBar";
 import Footer from "../Footer";
 
-gsap.registerPlugin(ScrollTrigger);
-
 const GetInTouch = () => {
   const location = useLocation();
   const { isDarkTheme } = useTheme();
-
   const [submitted, setSubmitted] = useState(false);
-
   const formRef = useRef(null);
-  const addressRef = useRef(null);
-  const headingRef = useRef(null);
-  const mapRef = useRef(null);
 
   useEffect(() => {
     const scrollToContact = () => {
@@ -40,71 +31,7 @@ const GetInTouch = () => {
         }
       }
     };
-
     scrollToContact();
-
-    const animateForm = () => {
-      const formItems = formRef.current?.querySelectorAll(".form-item");
-      const addressItems = addressRef.current?.querySelectorAll(".all-item");
-
-      gsap.fromTo(
-        formItems,
-        { x: -230, opacity: 0 },
-        {
-          x: 0,
-          opacity: 1,
-          duration: 2.5,
-          stagger: 0.2,
-          ease: "power3.out",
-        }
-      );
-
-      gsap.fromTo(
-        addressItems,
-        { y: 100, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 2.5,
-          stagger: 0.2,
-          ease: "power3.out",
-        }
-      );
-
-      gsap.fromTo(
-        headingRef.current,
-        { y: -100, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 2.5,
-          stagger: 0.2,
-          ease: "power3.out",
-        }
-      );
-
-      gsap.fromTo(
-        mapRef.current,
-        { opacity: 0 },
-        {
-          opacity: 1,
-          duration: 3,
-          delay: 0.5,
-          ease: "power3.out",
-        }
-      );
-    };
-
-    const container = document.getElementById("contact-us");
-    if (container) {
-      container.addEventListener("mouseenter", animateForm);
-    }
-
-    return () => {
-      if (container) {
-        container.removeEventListener("mouseenter", animateForm);
-      }
-    };
   }, [location]);
 
   const handleSubmit = (e) => {
@@ -116,23 +43,20 @@ const GetInTouch = () => {
   };
 
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-x-hidden">
       <NavBar />
-
       <div
         id="contact-us"
-        className={`flex flex-col items-center w-full px-4 md:px-10 py-5 overflow-hidden relative z-10 ${
+        className={`flex flex-col items-center w-full px-6 md:px-12 py-5 relative z-10 ${
           isDarkTheme ? "bg-[#000000]" : "bg-white"
         }`}
       >
         <div className="relative z-10 w-full max-w-[300px] md:max-w-4xl mx-4 md:mx-8 mt-20 md:mt-24 mb-8">
-          <Map ref={mapRef} className="w-full h-[150px] md:h-[300px] rounded-xl" />
+          <Map className="w-full h-[150px] md:h-[300px] rounded-xl" />
         </div>
 
-        {/* Centered Header */}
         <h2
-          ref={headingRef}
-          className={`heading-item text-3xl md:text-5xl self-stretch font-normal text-center mb-8 mt-8 md:mt-5 max-md:max-w-full font-raleway tracking-[0] leading-[normal] relative z-10 ${
+          className={`text-3xl md:text-5xl self-stretch font-normal text-center mb-8 mt-8 md:mt-5 max-md:max-w-full font-raleway tracking-[0] leading-[normal] relative z-10 ${
             isDarkTheme ? "text-white" : "text-black"
           }`}
         >
@@ -143,17 +67,16 @@ const GetInTouch = () => {
           <BackgroundAnimation />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full overflow-hidden">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl">
           {/* Left Side: Form */}
-          <div className={`form-container flex flex-col items-center w-[331px] md:w-full md:h-auto px-10 py-5`}>
+          <div className={`form-container flex flex-col items-center w-full md:h-auto px-10 py-5`}>
             <form
               ref={formRef}
               action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8"
               method="POST"
-              className="form-div flex flex-col items-center gap-5 p-5"
+              className="form-div flex flex-col items-center gap-5 p-5 w-[331px] md:w-full"
               onSubmit={handleSubmit}
             >
-              {/* Hidden Fields */}
               <input type="hidden" name="oid" value="00DWU00000AmlDj" />
               <input
                 type="hidden"
@@ -161,34 +84,31 @@ const GetInTouch = () => {
                 value="https://www.softshala.com/"
               />
 
-              {/* Form Fields */}
-              <div className="form-item">
+              <div>
                 <Name />
               </div>
-              <div className="form-item">
+              <div>
                 <Email />
               </div>
-              <div className="form-item">
+              <div>
                 <Phone />
               </div>
-              <div className="form-item">
+              <div>
                 <Message />
               </div>
 
-              {/* Submit Button */}
               <button
                 type="submit"
                 className={`w-[165px] h-[39px] md:w-[186px] md:h-[42px] font-raleway leading-[21.32px] text-[13px] md:text-[18px] font-bold rounded-[13px] p-[10px] gap-[10px] ${
                   isDarkTheme
                     ? "bg-white text-black hover:bg-gray-500"
                     : "bg-black text-white hover:bg-[#525252]"
-                } form-item`}
+                }`}
               >
                 Send Your Enquiry
               </button>
             </form>
 
-            {/* Success Message */}
             {submitted && (
               <p className="text-green-500 mt-4">
                 Your enquiry has been submitted successfully!
@@ -198,11 +118,10 @@ const GetInTouch = () => {
 
           {/* Right Side: Address */}
           <div
-            ref={addressRef}
-            className="address-div flex flex-col gap-[28px] p-5 w-[300px] md:w-full h-[278px] relative z-10"
+            className="address-div flex flex-col gap-[28px] p-5 w-full h-[278px] relative z-10"
           >
             <p
-              className={`w-[330px] md:w-[600px] h-[140px] text-sm md:text-[22px] p-[10px] gap-[10px] mt-0 md:mt-7 leading-[24px] font-albert font-normal text-justify ${
+              className={`w-full md:w-[600px] h-[140px] text-sm md:text-[22px] p-[10px] gap-[10px] mt-0 md:mt-7 leading-[24px] font-albert font-normal text-justify ${
                 isDarkTheme ? "text-white" : "text-black"
               }`}
             >
@@ -212,14 +131,12 @@ const GetInTouch = () => {
               will promptly get back to you with a solution.
             </p>
 
-            {/* Contact Info Sections */}
             <div
-              className={`w-[300px] md:w-[540px] h-[40px] md:h-auto flex flex-row justify-center items-start gap-10 md:mt-5 ml-0 md:ml-10 ${
+              className={`w-full md:w-[540px] h-[40px] md:h-auto flex flex-row justify-center items-start gap-10 md:mt-5 ml-0 md:ml-10 ${
                 isDarkTheme ? "text-white" : "text-black"
               }`}
             >
-              {/* Call Us Section */}
-              <div className="w-[50px] md:w-[150px] h-[40px] md:h-[81px] flex flex-col items-center gap-2 all-item">
+              <div className="w-[50px] md:w-[150px] h-[40px] md:h-[81px] flex flex-col items-center gap-2">
                 <img
                   src={isDarkTheme ? mobileImgWhite : mobileImgBlack}
                   alt="Call Icon"
@@ -242,8 +159,7 @@ const GetInTouch = () => {
                 </a>
               </div>
 
-              {/* Write Us Section */}
-              <div className="w-[120px] md:w-[166px] flex flex-col items-center gap-2 all-item ml-3">
+              <div className="w-[120px] md:w-[166px] flex flex-col items-center gap-2 ml-3">
                 <img
                   src={isDarkTheme ? emailImgWhite : emailImgBlack}
                   alt="Email Icon"
@@ -266,8 +182,7 @@ const GetInTouch = () => {
                 </a>
               </div>
 
-              {/* Main Office Section */}
-              <div className="w-[100px] md:w-[166px] flex flex-col items-center gap-2 all-item">
+              <div className="w-[100px] md:w-[166px] flex flex-col items-center gap-2">
                 <img
                   src={isDarkTheme ? officeImgWhite : officeImgBlack}
                   alt="Location Icon"
