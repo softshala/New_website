@@ -6,7 +6,7 @@ import webDevelopment from "../../../../public/images/WebDev.png";
 gsap.registerPlugin(ScrollTrigger);
 
 const WebDevelopment = () => {
-  const imageRef = useRef(null); // Reference to the image
+  const imageRef = useRef(null);
   const headingRef = useRef(null);
   const paragraphRef = useRef(null);
   const listRef = useRef(null);
@@ -38,27 +38,27 @@ const WebDevelopment = () => {
     gsap.fromTo(
       imageRef.current,
       { x: "0%", y: "0%", scale: 1, opacity: 1 },
-      { x: "-60%", y: "-45%", scale: 0.5, opacity: 1, duration: 2, ease: "power3.inOut", marginLeft: "120px" }
+      { x: "-60%", y: "-45%", scale: 0.5, opacity: 1, duration: 1, ease: "power3.inOut", marginLeft: "120px" } // Reduced from 2
     );
     gsap.fromTo(
       headingRef.current,
       { x: 900, opacity: 0 },
-      { x: 0, opacity: 1, delay: 1.2, duration: 1, ease: "power3.out" }
+      { x: 0, opacity: 1, delay: 0.6, duration: 0.5, ease: "power3.out" } // Reduced from 1.2 and 1
     );
     gsap.fromTo(
       paragraphRef.current,
       { y: 200, opacity: 0 },
-      { y: 0, opacity: 1, delay: 1.4, duration: 1.2, stagger: 0.9, ease: "power3.out" }
+      { y: 0, opacity: 1, delay: 0.7, duration: 0.6, stagger: 0.45, ease: "power3.out" } // Reduced from 1.4, 1.2, and 0.9
     );
     gsap.fromTo(
       listRef.current,
       { y: 100, opacity: 0 },
-      { y: 0, opacity: 1, delay: 1.8, duration: 2, stagger: 0.9, ease: "power3.out" }
+      { y: 0, opacity: 1, delay: 0.9, duration: 1, stagger: 0.45, ease: "power3.out" } // Reduced from 1.8, 2, and 0.9
     );
     gsap.fromTo(
       listRef2.current,
       { y: 100, opacity: 0 },
-      { y: 0, opacity: 1, delay: 2, duration: 1.5, stagger: 0.9, ease: "power3.out" }
+      { y: 0, opacity: 1, delay: 1, duration: 0.75, stagger: 0.45, ease: "power3.out" } // Reduced from 2, 1.5, and 0.9
     );
     setHasAnimated(true);
   };
@@ -80,14 +80,14 @@ const WebDevelopment = () => {
       />
       <h1
         ref={headingRef}
-        className="text-1xl hidden md:flex md:text-3xl font-raleway font-thin md:mt-4 mb-3 md:ml-24 text-center md:text-left"
+        className="text-1xl hidden md:flex md:text-3xl font-raleway font-thin md:mt-16 mb-3 md:ml-24 text-center md:text-left" // Changed md:mt-4 to md:mt-16
       >
         Web Development Service
       </h1>
 
       <p
         ref={paragraphRef}
-        className="text-sm md:text-lg mt-0 md:mt-5 leading-relaxed text-justify w-[300px] mr-9 md:w-full"
+        className="text-sm md:text-lg mt-4 md:mt-8 leading-relaxed text-justify w-[300px] mr-9 md:w-full" // Changed mt-0 md:mt-5 to mt-4 md:mt-8
       >
         At Softshala Technologies, we specialize in providing end-to-end Full Stack Web Development solutions that empower businesses to thrive in today’s digital landscape. From front-end design to back-end architecture, our expert developers combine the best technologies and practices to create scalable, efficient, and high-performance web applications.<br />
         With a deep understanding of both the technical and creative aspects of web development, we craft custom solutions that bring your ideas to life while ensuring seamless functionality, user experience, and business alignment. Whether you’re building a new website, enhancing an existing platform, or integrating web-based solutions, we provide comprehensive development services designed to meet your unique needs.

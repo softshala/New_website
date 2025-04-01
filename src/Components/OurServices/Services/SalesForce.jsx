@@ -38,27 +38,27 @@ const SalesForce = () => {
     gsap.fromTo(
       imageRef.current,
       { x: "0%", y: "0%", scale: 1, opacity: 1 },
-      { x: "-60%", y: "-45%", scale: 0.5, opacity: 1, duration: 2, ease: "power3.inOut", marginLeft: "120px" }
+      { x: "-60%", y: "-45%", scale: 0.5, opacity: 1, duration: 1, ease: "power3.inOut", marginLeft: "120px" }
     );
     gsap.fromTo(
       headingRef.current,
       { x: 900, opacity: 0 },
-      { x: 0, opacity: 1, delay: 1.2, duration: 1, ease: "power3.out" }
+      { x: 0, opacity: 1, delay: 0.6, duration: 0.5, ease: "power3.out" }
     );
     gsap.fromTo(
       paragraphRef.current,
       { y: 200, opacity: 0 },
-      { y: 0, opacity: 1, delay: 1.4, duration: 1.2, stagger: 0.9, ease: "power3.out" }
+      { y: 0, opacity: 1, delay: 0.7, duration: 0.6, stagger: 0.45, ease: "power3.out" }
     );
     gsap.fromTo(
       listRef.current,
       { y: 100, opacity: 0 },
-      { y: 0, opacity: 1, delay: 1.8, duration: 2, stagger: 0.9, ease: "power3.out" }
+      { y: 0, opacity: 1, delay: 0.9, duration: 1, stagger: 0.45, ease: "power3.out" }
     );
     gsap.fromTo(
       listRef2.current,
       { y: 100, opacity: 0 },
-      { y: 0, opacity: 1, delay: 2, duration: 1.5, stagger: 0.9, ease: "power3.out" }
+      { y: 0, opacity: 1, delay: 1, duration: 0.75, stagger: 0.45, ease: "power3.out" }
     );
     setHasAnimated(true);
   };
@@ -76,11 +76,11 @@ const SalesForce = () => {
         alt="Salesforce"
         className={`w-full md:w-auto max-w-[400px] mr-9 md:mr-0 md:max-w-none service-img mt-[-40px] md:mt-0 ${isMobile ? "relative" : "absolute z-20"}`}
       />
-      <h1 ref={headingRef} className="text-1xl hidden md:flex md:text-3xl font-raleway font-thin md:mt-2 mb-2 md:ml-32 text-center md:text-left">
+      <h1 ref={headingRef} className="text-1xl hidden md:flex md:text-3xl font-raleway font-thin md:mt-16 mb-2 md:ml-32 text-center md:text-left">
         SalesForce Services
       </h1>
       <p
-        className="text-sm md:text-lg mt-0 md:mt-3 leading-relaxed text-justify w-[300px] mr-9 md:w-full"
+        className="text-sm md:text-lg mt-4 md:mt-8 leading-relaxed text-justify w-[300px] mr-9 md:w-full"
         ref={paragraphRef}
       >
         At Softshala Technologies, as a Premium Salesforce Consulting Partner, we are dedicated to

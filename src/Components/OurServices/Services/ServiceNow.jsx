@@ -3,7 +3,6 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import serviceNowWhite from "../../../../public/ServicenowWhitee.png";
 import serviceNowBlack from "../../../../public/ServicenowWhitee.png";
-
 import { useTheme } from "../../../Context/ThemeContext";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -55,7 +54,7 @@ const ServiceNow = () => {
         y: "-45%",
         scale: 0.5,
         opacity: 1,
-        duration: 2,
+        duration: 1, // Reduced from 2
         ease: "power3.inOut",
         marginLeft: "120px",
       }
@@ -63,7 +62,7 @@ const ServiceNow = () => {
     gsap.fromTo(
       headingRef.current,
       { x: 900, opacity: 0 },
-      { x: 0, opacity: 1, delay: 1.2, duration: 1, ease: "power3.out" }
+      { x: 0, opacity: 1, delay: 0.6, duration: 0.5, ease: "power3.out" } // Reduced from 1.2 and 1
     );
     gsap.fromTo(
       paragraphRef.current,
@@ -71,9 +70,9 @@ const ServiceNow = () => {
       {
         y: 0,
         opacity: 1,
-        delay: 1.4,
-        duration: 1.2,
-        stagger: 0.9,
+        delay: 0.7, // Reduced from 1.4
+        duration: 0.6, // Reduced from 1.2
+        stagger: 0.45, // Reduced from 0.9
         ease: "power3.out",
       }
     );
@@ -83,9 +82,9 @@ const ServiceNow = () => {
       {
         y: 0,
         opacity: 1,
-        delay: 1.8,
-        duration: 2,
-        stagger: 0.9,
+        delay: 0.9, // Reduced from 1.8
+        duration: 1, // Reduced from 2
+        stagger: 0.45, // Reduced from 0.9
         ease: "power3.out",
       }
     );
@@ -95,9 +94,9 @@ const ServiceNow = () => {
       {
         y: 0,
         opacity: 1,
-        delay: 2,
-        duration: 1.5,
-        stagger: 0.9,
+        delay: 1, // Reduced from 2
+        duration: 0.75, // Reduced from 1.5
+        stagger: 0.45, // Reduced from 0.9
         ease: "power3.out",
       }
     );
@@ -121,13 +120,13 @@ const ServiceNow = () => {
       />
       <h1
         ref={headingRef}
-        className="text-1xl hidden md:flex md:text-3xl font-raleway font-thin md:mt-4 mb-3 md:ml-32 text-center md:text-left"
+        className="text-1xl hidden md:flex md:text-3xl font-raleway font-thin md:mt-16 mb-3 md:ml-32 text-center md:text-left" // Changed md:mt-4 to md:mt-16
       >
         Services
       </h1>
       <p
         ref={paragraphRef}
-        className="text-sm md:text-lg leading-relaxed text-justify w-[300px] mr-9 md:w-full"
+        className="text-sm md:text-lg mt-4 md:mt-8 leading-relaxed text-justify w-[300px] mr-9 md:w-full" // Added mt-4 and md:mt-8
       >
         Elevate your digital transformation journey with Softshala Technologies,
         your reliable ally for all ServiceNow solutions. Leveraging the power of
