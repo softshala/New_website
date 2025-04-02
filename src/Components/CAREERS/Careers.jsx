@@ -45,22 +45,46 @@ const Career = () => {
   // Employee testimonials data
   const testimonials = [
     {
-      name: "Kunal Arya",
-      role: "Head of Marketing & UI/UX Designer",
-      quote:
-        "Softshala Technologies has amazing work culture! The team is Supportive, and the project are exciting",
-    },
-    {
-      name: "Kunal Arya",
-      role: "Head of Marketing & UI/UX Designer",
-      quote:
-        "Softshala Technologies has amazing work culture! The team is Supportive, and the project are exciting",
-    },
-    {
-      name: "Kunal",
+      name: "Aman Sharma",
       role: "",
       quote:
-        "Softshala Technologies has amazing work culture! The team is Supportive, and the project are exciting",
+        "At our IT startup, we pride ourselves on fostering a vibrant work culture that values collaboration and innovation. We provide robust support for both freshers and experienced employees, offering mentorship programs, continuous learning opportunities, and an open-door policy that encourages communication and feedback, ensuring everyone feels valued and empowered to grow",
+    },
+    {
+      name: "Tushar Pandurang Barlawar",
+      role: "",
+      quote:
+        "I’m really enjoying my experience at SoftShala Technologies Pvt Limited. The work environment is supportive, and the opportunities for growth are fantastic. I appreciate the clear communication, teamwork, and focus on innovation. Looking forward to continuing to contribute and grow with the team!",
+    },
+    {
+      name: "Chetan Sharma",
+      role: "",
+      quote:
+        "SoftShala embrace innovation and teamwork, providing a supportive environment where freshers like me gain hands-on experience, mentorship, and opportunities to learn and grow.",
+    },
+    {
+      name: "Madhvendra Singh Rathore",
+      role: "",
+      quote:
+        "Loving my experience at SoftShala Technologies! A supportive work environment, great growth opportunities, and a culture of innovation make it truly rewarding. Excited to learn and contribute!",
+    },
+    {
+      name: "Ridam Jain",
+      role: "",
+      quote:
+        "SoftShala Technologies provides an excellent work environment that fosters growth and collaboration. The team here is incredibly supportive, and everyone helps each other in overcoming challenges. The positive and encouraging atmosphere makes it a great place to work, learn, and evolve. I am truly happy to have joined SoftShala.",
+    },
+    {
+      name: "Garvit Sharma",
+      role: "",
+      quote:
+        "When I joined Softshala Technologies, I got the opportunity to work directly on a project, which boosted my confidence. The work culture here is better compared to my previous company. The CEO and other members are very supportive and treat every employee like family. They act like elder brothers, always trying to understand and solve any issues. Additionally, I am getting new opportunities and working on them, which is helping me grow professionally.",
+    },
+    {
+      name: "Vinay Soni",
+      role: "",
+      quote:
+        "I am happy to be a part of Softshala Technologies! This company provides a fantastic environment for learning and growth. Since joining, I have had the opportunity to work on exciting projects that have helped me enhance my skills and gain valuable experience. The team is highly supportive, and the work culture encourages innovation and collaboration. Softshala Technologies truly values its employees by offering continuous learning opportunities, professional development, and a positive work atmosphere.",
     },
   ];
 

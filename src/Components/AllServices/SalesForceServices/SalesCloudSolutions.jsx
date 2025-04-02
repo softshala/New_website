@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import CloudSolution from "../images/ServiceCloudSolution.png";
-import CaseManagement from "../images/case management.png";
-import OmniChannel from "../images/omniChannel.png";
-import Messaging from "../images/Messagingforweb.png";
-import KnowledgeBase from "../images/KnowledgeBaseImplementation.png";
+import SolutionServices from "../images/salesfroce.png";
+import OurExperties from "../images/OurExperties.png";
+import ResultDeliver from "../images/ResultDeliver.png";
+import OurSolutions from "../images/OurSolution.png";
 import { useTheme } from "../../../Context/ThemeContext";
 import { useInView } from "react-intersection-observer";
+import whyChooseWhite from "../images/WhyChooseUs.png";
+import whyChooseBlack from "../images/WhyChooseBlack.png";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../../NavBar";
 import Footer from "../../Footer";
@@ -20,11 +21,13 @@ const SalesCloudSolutions = () => {
   const para2Ref = useRef(null);
   const btnRef = useRef(null);
   const imgRef = useRef(null);
-
   const salesforceRef = useRef(null);
   const consultingRef = useRef(null);
   const line1Ref = useRef(null);
   const line2Ref = useRef(null);
+  const listRef2 = useRef(null);
+  const listRef3 = useRef(null);
+  const listRef4 = useRef(null);
 
   const { ref, inView } = useInView({
     triggerOnce: true,
@@ -40,6 +43,36 @@ const SalesCloudSolutions = () => {
     window.addEventListener("resize", checkScreenSize);
     return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
+
+  const handleClick2 = (index) => {
+    const refs = [listRef2, listRef3, listRef4];
+    const spans = document.querySelectorAll(".option-span");
+    spans.forEach((span, i) => {
+      if (i === index) {
+        span.classList.add("active");
+      } else {
+        span.classList.remove("active");
+      }
+    });
+    refs.forEach((ref, i) => {
+      if (i === index) {
+        gsap.fromTo(
+          ref.current,
+          { height: 0, opacity: 0 },
+          { height: "auto", opacity: 1, duration: 1, ease: "power3.out" }
+        );
+        ref.current.classList.remove("hidden");
+      } else {
+        gsap.to(ref.current, {
+          height: 0,
+          opacity: 0,
+          duration: 1,
+          ease: "power3.out",
+        });
+        ref.current.classList.add("hidden");
+      }
+    });
+  };
 
   useEffect(() => {
     if (!inView) return;
@@ -62,7 +95,7 @@ const SalesCloudSolutions = () => {
       );
       gsap.fromTo(
         btnRef.current,
-        { opacity: 0, x: 300 }, // Fixed to match upper code
+        { opacity: 0, x: 300 },
         { opacity: 1, x: 0, duration: 1.3, ease: "power3.inOut" }
       );
       gsap.fromTo(
@@ -93,7 +126,7 @@ const SalesCloudSolutions = () => {
           {
             scaleX: 1,
             transformOrigin: "left",
-            duration: 2, // Adjusted to match upper code
+            duration: 2,
             ease: "power3.out",
           },
           "<"
@@ -110,7 +143,7 @@ const SalesCloudSolutions = () => {
           {
             scaleX: 1,
             transformOrigin: "left",
-            duration: 2, // Adjusted to match upper code
+            duration: 2,
             ease: "power3.out",
           },
           "<"
@@ -166,7 +199,7 @@ const SalesCloudSolutions = () => {
                 className="uppercase text-[20px] md:text-[32px] font-medium tracking-[4.8px]"
                 ref={consultingRef}
               >
-                SERVICE CLOUD SOLUTIONS SERVICE
+                SALES CLOUD SOLUTIONS
               </h5>
               <div className="flex items-center" ref={line2Ref}>
                 <hr
@@ -191,12 +224,12 @@ const SalesCloudSolutions = () => {
             </div>
 
             <div
-              className="uppercase text-[28px] md:text-[40px] font-medium mt-4 md:mt-5 tracking-[3.02px] leading-normal text-left"
+              className="uppercase text-[28px] md:text-[46px] font-medium mt-4 md:mt-5 tracking-[3.02px] leading-normal text-left"
               ref={paraRef}
             >
-              <p>DELIVER EXCEPTIONAL</p>
-              <p>CUSTOMER SERVICE WITH</p>
-              <p>SALESFORCE SERVICE CLOUD</p>
+              <p>ELEVATE YOUR SALES</p>
+              <p>WITH SALESFORCE SALES</p>
+              <p>CLOUD SOLUTIONS</p>
             </div>
 
             <div
@@ -204,8 +237,8 @@ const SalesCloudSolutions = () => {
               ref={para2Ref}
             >
               <p>
-                AI-driven, omni-channel solutions to enhance customer experience
-                and boost agent productivity
+                Empowering sales teams with cutting-edge tools to close deals
+                faster
               </p>
             </div>
 
@@ -226,7 +259,7 @@ const SalesCloudSolutions = () => {
                 ref={btnRef}
                 onClick={handleNavigation}
               >
-                Get Started
+                Schedule a Demo
               </button>
             </div>
           </div>
@@ -234,7 +267,7 @@ const SalesCloudSolutions = () => {
           {/* Right Section */}
           <div className="relative flex justify-center md:justify-end w-full h-full mt-10 md:mt-28">
             <img
-              src={CloudSolution}
+              src={SolutionServices}
               alt="salesforce"
               className="h-[280px] md:h-[472px] w-auto max-w-[280px] md:max-w-[500px] lg:max-w-[700px] xl:max-w-[900px] mr-0 md:mr-10 object-contain"
               ref={imgRef}
@@ -242,12 +275,36 @@ const SalesCloudSolutions = () => {
           </div>
         </div>
 
-        <div className="min-h-screen mx-auto items-start md:items-center justify-start md:justify-center mt-12 md:mt-0">
+        <div className="mx-auto items-start md:items-center justify-start md:justify-center mt-12 md:mt-0">
+          <div className="flex justify-start md:justify-center mb-8 md:mb-10">
+            <p className="w-[90%] md:w-[1118px] h-auto md:h-[75px] text-sm md:text-base font-raleway font-bold text-[16px] md:text-[22px] leading-[20px] md:leading-[23.59px] tracking-[0.1em] text-left md:text-center">
+              {`"Build strong customer relationships and grow revenue with a single source of truth. Sales Cloud, the #1 CRM for sales, lets us help you sell faster, smarter, and more efficiently. With built-in automation, intelligence, and real-time data, we will help you boost productivity and growth."`}
+            </p>
+          </div>
+
+          <div className="flex justify-start md:justify-center items-start md:items-center mt-6 md:mt-8 mb-4 md:mb-1.5">
+            <h6 className="font-bold text-[24px] md:text-[37px] leading-[35px] md:leading-[45.49px] tracking-[0.1em] text-left md:text-center">
+              What We Do
+            </h6>
+          </div>
+          <div className="flex justify-start md:justify-center items-start md:items-center mb-8 md:mb-10">
+            <hr
+              className="w-[150px] md:w-[250px] h-[1px] border-none"
+              style={{
+                backgroundImage: isDarkTheme
+                  ? "linear-gradient(to right, #9CFF00, #00D1FF)"
+                  : "linear-gradient(to right, #000000, #1F4B55)",
+                height: "1px",
+                border: "none",
+              }}
+            />
+          </div>
+
           <div className="space-y-12 md:space-y-0">
             <div className="firstdiv flex flex-col md:flex-row justify-start md:justify-between items-start md:items-center mt-8 gap-6 md:gap-8 mb-12 md:mb-10">
               <div className="text-left max-w-[90%] md:max-w-[920px] p-[10px] gap-[10px] ml-0 md:ml-8">
                 <h6 className="font-bold text-[20px] md:text-[30px] leading-[30px] md:leading-[45.49px] tracking-[0.1em] text-left">
-                  Case Management
+                  Our Expertise
                 </h6>
                 <div className="flex justify-start items-center mt-2 md:mt-0.5">
                   <hr
@@ -263,30 +320,40 @@ const SalesCloudSolutions = () => {
                 </div>
                 <ul className="list-disc pl-5 font-raleway font-medium text-[14px] md:text-[18px] text-left md:text-justify leading-[20px] md:leading-[24.59px] tracking-[0.1em] mt-4 md:mt-8">
                   <li>
-                    We automated case creation from multiple channels, including
-                    email, web forms, and social media, using Email-to-Case and
-                    Web-to-Case functionalities.
+                    Consulting: We analyze your unique business challenges and
+                    design a roadmap for success using Salesforce’s powerful
+                    suite of tools.
                   </li>
                   <li>
-                    Using Salesforce Flows, we implemented escalation rules to
-                    ensure urgent cases were addressed within SLA timelines.
+                    Development: From custom applications to tailored features,
+                    we develop solutions that align perfectly with your business
+                    goals.
+                  </li>
+                  <li>
+                    Integration: Seamlessly connect Salesforce with your
+                    existing systems to create a unified and efficient workflow.
+                  </li>
+                  <li>
+                    Implementation: Get up and running quickly with our proven
+                    implementation strategies, ensuring a smooth transition and
+                    measurable ROI.
                   </li>
                 </ul>
               </div>
 
               <div className="flex justify-center items-start mr-0 md:mr-10 mt-8 md:mt-0 w-full md:w-auto">
                 <img
-                  src={CaseManagement}
-                  alt="Case Management"
+                  src={OurExperties}
+                  alt="Our Expertise"
                   className="max-w-[220px] md:max-w-[300px] max-h-[200px] md:max-h-[298.39px] object-contain"
                 />
               </div>
             </div>
 
-            <div className="seconddiv flex flex-col md:flex-row justify-start md:justify-between items-start md:items-center mt-8 gap-6 md:gap-8 mb-12 md:mb-10">
+            <div className="seconddiv flex flex-col md:flex-row justify-start md:justify-between items-start md:items-center mt-8 gap-6 md:gap-8">
               <div className="text-left max-w-[90%] md:max-w-[920px] p-[10px] gap-[10px] md:order-2 mr-0 md:mr-10">
                 <h6 className="font-bold text-[20px] md:text-[30px] leading-[30px] md:leading-[45.49px] tracking-[0.1em] text-left">
-                  Omni-Channel Implementation
+                  Our Solutions Empower You to
                 </h6>
                 <div className="flex justify-start items-center mt-2 md:mt-0.5">
                   <hr
@@ -302,33 +369,198 @@ const SalesCloudSolutions = () => {
                 </div>
                 <ul className="list-disc pl-5 font-raleway font-medium text-[14px] md:text-[18px] text-left md:text-justify leading-[20px] md:leading-[24.59px] tracking-[0.1em] mt-4 md:mt-8">
                   <li>
-                    Our developers configured Omni-Channel routing to distribute
-                    work based on agent skills, availability, and workload.
+                    Boost Sales Productivity with Salesforce Maps, Einstein AI,
+                    and Sales Cloud in Slack to accelerate deal cycles and
+                    optimize sales strategies.
                   </li>
                   <li>
-                    We implemented Presence Status to let agents manage their
-                    availability dynamically.
+                    Engage Buyers at Every Step by aligning marketing and sales
+                    with built-in CRM intelligence and revenue analytics.
                   </li>
                   <li>
-                    Routing logic was customized using Flow, ensuring priority
-                    cases were always routed first.
+                    Streamline Revenue Processes through Revenue Cloud and CPQ
+                    to automate quotes, contracts, and revenue lifecycle
+                    management.
+                  </li>
+                  <li>
+                    Unlock Actionable Insights via Tableau, Sales Analytics, and
+                    Einstein Conversation Insights to drive informed decisions
+                    and optimize performance.
                   </li>
                 </ul>
               </div>
 
               <div className="flex justify-center items-start md:order-1 ml-0 md:ml-10 mt-8 md:mt-0 w-full md:w-auto">
                 <img
-                  src={OmniChannel}
-                  alt="Omni-Channel"
+                  src={OurSolutions}
+                  alt="Our Solutions"
                   className="max-w-[220px] md:max-w-[300px] max-h-[200px] md:max-h-[298.39px] object-contain"
                 />
               </div>
             </div>
 
-            <div className="thirddiv flex flex-col md:flex-row justify-start md:justify-between items-start md:items-center mt-8 gap-6 md:gap-8 mb-12 md:mb-10">
+            <div className="flex flex-col items-start md:items-center font-raleway">
+              <div className="font-bold text-[24px] md:text-[32px] leading-[35px] md:leading-[48px] tracking-[0.1em] text-left md:text-center mt-12 md:mt-16">
+                Transform Your Sales with Salesforce Sales Cloud
+              </div>
+              <div className="flex justify-start md:justify-center items-start md:items-center w-full mt-2 md:mt-4">
+                <hr
+                  className="w-[200px] md:w-[360px] h-[1px] border-none"
+                  style={{
+                    backgroundImage: isDarkTheme
+                      ? "linear-gradient(to right, #9CFF00, #00D1FF)"
+                      : "linear-gradient(to right, #000000, #1F4B55)",
+                    height: "1px",
+                    border: "none",
+                  }}
+                />
+              </div>
+              <p className="font-raleway font-medium text-[16px] md:text-[20px] text-left md:text-justify leading-[24px] md:leading-[28px] tracking-[0.1em] p-8 md:p-16 w-[90%] md:w-[1118px]">
+                {`"At Softshala, we specialize in helping businesses unlock the full potential of Salesforce Sales Cloud to drive growth, enhance productivity, and build lasting customer relationships. With our expertise in consulting, development, integration, and implementation, we deliver solutions tailored to your sales needs."`}
+              </p>
+
+              <div className="flex flex-col md:flex-row items-start md:items-center mt-8 p-[10px] gap-8 md:gap-16 w-full">
+                <img
+                  src={isDarkTheme ? whyChooseWhite : whyChooseBlack}
+                  className="w-[280px] md:w-[400px] mr-0 md:mr-24"
+                />
+                <div>
+                  <ul className="list-disc font-raleway text-[16px] md:text-[22px] leading-[24px] md:leading-[31px] tracking-[0.1em] mt-8 md:mt-16 w-[90%] md:w-auto">
+                    <li>
+                      Certified Salesforce experts with a proven track record of
+                      success.
+                    </li>
+                    <li>
+                      Tailored strategies to optimize your sales processes.
+                    </li>
+                    <li>
+                      Seamless integration and stress-free implementation to
+                      ensure quick ROI.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="font-bold text-[24px] md:text-[32px] leading-[35px] md:leading-[48px] tracking-[0.1em] text-left md:text-center mt-12 md:mt-16">
+                Key Solutions with Sales Cloud
+              </div>
+              <div className="flex justify-start md:justify-center items-start md:items-center w-full mt-2 md:mt-4">
+                <hr
+                  className="w-[200px] md:w-[360px] h-[1px] border-none"
+                  style={{
+                    backgroundImage: isDarkTheme
+                      ? "linear-gradient(to right, #9CFF00, #00D1FF)"
+                      : "linear-gradient(to right, #000000, #1F4B55)",
+                    height: "1px",
+                    border: "none",
+                  }}
+                />
+              </div>
+
+              <div
+                className={`flex flex-col md:flex-row items-start md:items-center justify-start md:justify-center mt-8 p-[10px] gap-8 md:gap-16 font-raleway text-[14px] md:text-[16px] cursor-pointer`}
+              >
+                <span
+                  className={`${
+                    isDarkTheme ? "bg-white text-black" : "bg-black text-white"
+                  } option-span w-[160px] md:w-[200px] p-[12px] md:p-[16px] rounded-[8px] text-center`}
+                  onClick={() => handleClick2(0)}
+                >
+                  Enhance Sales Productivity
+                </span>
+                <span
+                  className={`${
+                    isDarkTheme ? "bg-white text-black" : "bg-black text-white"
+                  } option-span w-[160px] md:w-[200px] p-[12px] md:p-[16px] rounded-[8px] text-center`}
+                  onClick={() => handleClick2(1)}
+                >
+                  Build Stronger Customer Relationships
+                </span>
+                <span
+                  className={`${
+                    isDarkTheme ? "bg-white text-black" : "bg-black text-white"
+                  } option-span w-[160px] md:w-[200px] p-[12px] md:p-[16px] rounded-[8px] text-center`}
+                  onClick={() => handleClick2(2)}
+                >
+                  Drive Data-Driven Decisions
+                </span>
+              </div>
+
+              <div
+                className="mt-8 font-raleway hidden w-[90%] md:w-[920px]"
+                ref={listRef2}
+              >
+                <ul className="text-[14px] md:text-[18px] text-left md:text-justify leading-[20px] md:leading-[28px] tracking-[0.1em]">
+                  <li className="font-medium">
+                    <strong className="font-bold">
+                      Workflow and Process Automation:
+                    </strong>{" "}
+                    Streamline tasks and eliminate manual work with custom
+                    workflows.
+                  </li>
+                  <li className="font-medium">
+                    <strong className="font-bold">
+                      Quoting and Contract Approvals:
+                    </strong>{" "}
+                    Speed up deal cycles with seamless approval processes and
+                    accurate quotes.
+                  </li>
+                  <li className="font-medium">
+                    <strong className="font-bold">CRM Everywhere:</strong>{" "}
+                    Access and update your CRM anytime, anywhere with mobile
+                    apps and browser extensions.
+                  </li>
+                </ul>
+              </div>
+
+              <div
+                className="mt-8 font-raleway hidden w-[90%] md:w-[920px]"
+                ref={listRef3}
+              >
+                <ul className="text-[14px] md:text-[18px] text-left md:text-justify leading-[20px] md:leading-[28px] tracking-[0.1em]">
+                  <li className="font-medium">
+                    <strong className="font-bold">Lead Management:</strong>{" "}
+                    Capture, nurture, and convert leads efficiently with smart
+                    tools.
+                  </li>
+                  <li className="font-medium">
+                    <strong className="font-bold">
+                      Account and Opportunity Management:
+                    </strong>{" "}
+                    Gain a 360-degree view of customer accounts to close deals
+                    faster.
+                  </li>
+                  <li className="font-medium">
+                    <strong className="font-bold">Activity Management:</strong>{" "}
+                    Track interactions and ensure seamless collaboration across
+                    teams.
+                  </li>
+                </ul>
+              </div>
+
+              <div
+                className="mt-8 font-raleway hidden w-[90%] md:w-[920px]"
+                ref={listRef4}
+              >
+                <ul className="text-[14px] md:text-[18px] text-left md:text-justify leading-[20px] md:leading-[28px] tracking-[0.1em]">
+                  <li className="font-medium">
+                    <strong className="font-bold">Sales AI:</strong> Use
+                    Einstein AI to guide your sales team at every step of the
+                    sales cycle.
+                  </li>
+                  <li className="font-medium">
+                    <strong className="font-bold">Sales Analytics:</strong>{" "}
+                    Optimize revenue and grow your pipeline with insights from
+                    Tableau and Data Cloud.
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="firstdiv flex flex-col md:flex-row justify-start md:justify-between items-start md:items-center mt-11 gap-6 md:gap-8">
               <div className="text-left max-w-[90%] md:max-w-[920px] p-[10px] gap-[10px] ml-0 md:ml-8">
                 <h6 className="font-bold text-[20px] md:text-[30px] leading-[30px] md:leading-[45.49px] tracking-[0.1em] text-left">
-                  Messaging for In-App and Web
+                  The Results We Deliver
                 </h6>
                 <div className="flex justify-start items-center mt-2 md:mt-0.5">
                   <hr
@@ -343,70 +575,36 @@ const SalesCloudSolutions = () => {
                   />
                 </div>
                 <ul className="list-disc pl-5 font-raleway font-medium text-[14px] md:text-[18px] text-left md:text-justify leading-[20px] md:leading-[24.59px] tracking-[0.1em] mt-4 md:mt-8">
+                  <li>Faster sales cycles and improved team productivity.</li>
                   <li>
-                    Deployed Messaging channels integrated with Einstein Bots to
-                    handle FAQs and route complex queries to agents.
+                    Strengthened customer relationships and increased deal win
+                    rates.
                   </li>
                   <li>
-                    Customized the chatbot experience with contextual greetings
-                    and proactive engagement using Einstein AI.
+                    Actionable insights to make informed, data-driven decisions.
                   </li>
                 </ul>
               </div>
 
               <div className="flex justify-center items-start mr-0 md:mr-10 mt-8 md:mt-0 w-full md:w-auto">
                 <img
-                  src={Messaging}
-                  alt="Messaging"
-                  className="max-w-[220px] md:max-w-[300px] max-h-[200px] md:max-h-[298.39px] object-contain"
-                />
-              </div>
-            </div>
-
-            <div className="fourthdiv flex flex-col md:flex-row justify-start md:justify-between items-start md:items-center mt-8 gap-6 md:gap-8 mb-12 md:mb-10">
-              <div className="text-left max-w-[90%] md:max-w-[920px] p-[10px] gap-[10px] md:order-2 mr-0 md:mr-10">
-                <h6 className="font-bold text-[20px] md:text-[30px] leading-[30px] md:leading-[45.49px] tracking-[0.1em] text-left">
-                  Knowledge Base Implementation
-                </h6>
-                <div className="flex justify-start items-center mt-2 md:mt-0.5">
-                  <hr
-                    className="w-[180px] md:w-[273px] h-[1px] border-none"
-                    style={{
-                      backgroundImage: isDarkTheme
-                        ? "linear-gradient(to right, #9CFF00, #00D1FF)"
-                        : "linear-gradient(to right, #000000, #1F4B55)",
-                      height: "1px",
-                      border: "none",
-                    }}
-                  />
-                </div>
-                <ul className="list-disc pl-5 font-raleway font-medium text-[14px] md:text-[18px] text-left md:text-justify leading-[20px] md:leading-[24.59px] tracking-[0.1em] mt-4 md:mt-8">
-                  <li>
-                    We created a robust Knowledge Base by developing custom
-                    article categories, ensuring customers and agents could
-                    quickly find solutions.
-                  </li>
-                  <li>
-                    Integrated the Knowledge Base into the Self-Service Portal
-                    and Service Console for seamless access.
-                  </li>
-                  <li>
-                    Enabled multilingual support to serve a global customer
-                    base.
-                  </li>
-                </ul>
-              </div>
-
-              <div className="flex justify-center items-start md:order-1 ml-0 md:ml-10 mt-8 md:mt-0 w-full md:w-auto">
-                <img
-                  src={KnowledgeBase}
-                  alt="Knowledge Base"
+                  src={ResultDeliver}
+                  alt="The Results We Deliver"
                   className="max-w-[220px] md:max-w-[300px] max-h-[200px] md:max-h-[298.39px] object-contain"
                 />
               </div>
             </div>
           </div>
         </div>
+
+        <style>
+          {`
+            .option-span.active {
+              background-color: ${isDarkTheme ? "black" : "white"};
+              color: ${isDarkTheme ? "white" : "black"};
+            }
+          `}
+        </style>
       </div>
       <Footer />
     </>
