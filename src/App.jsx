@@ -21,6 +21,7 @@ import SalesForceMarketingCloud from "./Components/AllServices/SalesForceService
 import SalesCloudSolutionServices from "./Components/AllServices/SalesForceServices/SalesCloudSolutionServices";
 import Blog1 from "./Components/Blogs/AllBlogs/Blog1"; // Import Blog1 component (adjust the path as needed)
 import Blog2 from "./Components/Blogs/AllBlogs/Blog2";
+import Ceo from './Components/CEO/Ceo'
 const App = () => {
   return (
     <ThemeProvider>
@@ -85,6 +86,10 @@ const App = () => {
             element={<SalesCloudSolutionServices />}
           />
 
+<Route
+            path="/ceo"
+            element={<Ceo />}
+          />
           {/* Other Services */}
           <Route path="/service-now" element={<ServiceNow />} />
           <Route path="/web-development" element={<WebDevelopment />} />
