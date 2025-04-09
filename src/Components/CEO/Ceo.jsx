@@ -115,6 +115,27 @@ END:VCARD
                 </a>
               </div>
             </div>
+            <div className="mt-6 md:mt-12">
+              <h3 className={`text-2xl font-semibold ${isDarkTheme ? 'text-white' : 'text-black'}`}>Instagram</h3>
+              <div className="flex flex-col md:flex-row justify-center md:space-x-32 mt-2">
+                <a
+                  href="https://www.instagram.com/learn_with_softshala?igsh=MWx2dm5oeWY1ZjNsMw=="
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${isDarkTheme ? 'text-white' : 'text-gray-900'} hover:underline mb-2 md:mb-0`}
+                >
+                  Learn With Us
+                </a>
+                <a
+                  href="https://www.instagram.com/softshala?igsh=ZTI1ZXVsMXFqdzVn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${isDarkTheme ? 'text-white' : 'text-gray-900'} hover:underline`}
+                >
+                  Company
+                </a>
+              </div>
+            </div>
             <div className="mt-6 md:mt-8">
               <h3 className={`text-2xl font-semibold ${isDarkTheme ? 'text-white' : 'text-black'}`}>EMAIL</h3>
               <a
