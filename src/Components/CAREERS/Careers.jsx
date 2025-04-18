@@ -106,7 +106,7 @@ const Career = () => {
       date: "March 29, 2025",
       description:
         "Explore how Salesforce helps businesses reduce their carbon footprint and build sustainable digital systems.",
-      link: "/blog1",
+      link: "/blog/leadership-in-salesforce",
     },
     {
       title:
@@ -115,7 +115,7 @@ const Career = () => {
       date: "March 29, 2025",
       description:
         "Learn why thought leadership in Salesforce implementation is crucial for business success.",
-      link: "/blog2",
+      link: "/blog/sustainable-It-digital-system-with-salesforce",
     },
     {
       title:
@@ -124,7 +124,7 @@ const Career = () => {
       date: "April 18, 2025",
       description:
         "Trust is more important than ever As AI becomes part of every business, customers need to feel confident in the tools they’re using",
-      link: "/blog3",
+      link: "/blog/agentforce-AI-now-world-tour-salesforce",
     },
     {
       title:

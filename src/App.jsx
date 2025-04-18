@@ -35,9 +35,9 @@ const App = () => {
           <Route path="/home" element={<HOME />} />
 
           {/* Blog Routes */}
-          <Route path="/blog1" element={<Blog1 />} />
-          <Route path="/blog2" element={<Blog2 />} />
-          <Route path="/blog3" element={<Blog3 />} />
+          <Route path="/blog/leadership-in-salesforce" element={<Blog1 />} />
+          <Route path="/blog/sustainable-It-digital-system-with-salesforce" element={<Blog2 />} />
+          <Route path="/blog/agentforce-AI-now-world-tour-salesforce" element={<Blog3 />} />
           {/* Other Routes */}
           <Route path="/get-in-touch" element={<GetInTouch />} />
           <Route path="/about" element={<AboutUs />} />
