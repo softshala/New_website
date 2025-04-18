@@ -119,12 +119,12 @@ const Career = () => {
     },
     {
       title:
-        "Sustainable IT: Making Your Digital System Eco-Friendly with Salesforce",
+        "Our Experience at Agentforce World Tour Mumbai — A Special Event for Softshala Technologies",
       author: "Shubham Sharma",
-      date: "March 29, 2025",
+      date: "April 18, 2025",
       description:
-        "Explore how Salesforce helps businesses reduce their carbon footprint and build sustainable digital systems.",
-      link: "/blog1",
+        "Trust is more important than ever As AI becomes part of every business, customers need to feel confident in the tools they’re using",
+      link: "/blog3",
     },
     {
       title:
